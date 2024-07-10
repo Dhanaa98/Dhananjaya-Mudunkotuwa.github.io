@@ -63,6 +63,37 @@ a, a:focus, a:hover, a:active, .button, .button:focus, .button:hover, .button:ac
     color: #666; /* Example of a lighter gray color */
 }
 
+ .categories {
+            text-align: center;
+            margin-bottom: 2em;
+        }
+ .categories ul {
+            list-style: none;
+            padding: 0;
+            display: inline-block;
+        }
+.categories ul li {
+            display: inline;
+        }
+ .categories ul li button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+  .categories ul li button:hover {
+            background-color: #0056b3;
+        }
+
+ .posts article {
+            display: none;
+        }
+
+	    
 
     </style>
 	
@@ -166,7 +197,7 @@ a, a:focus, a:hover, a:active, .button, .button:focus, .button:hover, .button:ac
 											</ul>
 										</article>
 
-										<article>
+										<article class="data-analysis">
 											<a href="https://github.com/Dhanaa98/Sales-Performance-Dashboard" id = "Adidas-dashboard" class="image"><img src="images\Sales%20Performance%20Dashboard.png" alt="" /></a>
 											<h3><a href="https://github.com/Dhanaa98/Sales-Performance-Dashboard" > Sales Performance Dashboard </a></h3>
 											<p>This project analyzes sales performance data for Adidas and visualizes the data in an interactive Power BI dashboard. The goal is to provide actionable insights for business stakeholders to optimize sales strategies and drive business growth.</p>
@@ -185,7 +216,7 @@ a, a:focus, a:hover, a:active, .button, .button:focus, .button:hover, .button:ac
 												<li><a href="https://github.com/Dhanaa98/Sales-Data" class="button">View Project</a></li>
 											</ul>
 										</article>
-										<article>
+										<article class="data-analysis">
 											<a href="https://github.com/Dhanaa98/Coffee-Sales-Dashboard" id = "Coffee-Sales" class="image"><img src="images\Coffe%20Sales%20Dashboard.png" alt="" /></a>
 											<h3><a href="https://github.com/Dhanaa98/Coffee-Sales-Dashboard" > Coffee Sales Dashboard </a></h3>
 											<p>This project shows an interactive and insightful Excel dashboard of Coffee material sales of a company. The dashboard showcases how raw data can be transformed 
@@ -460,5 +491,27 @@ a, a:focus, a:hover, a:active, .button, .button:focus, .button:hover, .button:ac
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
+			<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const buttons = document.querySelectorAll('.categories button');
+            const articles = document.querySelectorAll('.posts article');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filter = button.getAttribute('data-filter');
+                    articles.forEach(article => {
+                        if (filter === '*' || article.classList.contains(filter.slice(1))) {
+                            article.style.display = 'block';
+                        } else {
+                            article.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Show all projects by default
+            buttons[0].click();
+        });
+    </script>
 	</body>
 </html>
